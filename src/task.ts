@@ -14,11 +14,15 @@ export class Task {
     assetName: "",
     department: "",
     emailOfDepartment: "",
-    purchaseDate: ""
+    purchaseDate: "",
+    countryOfDepartment: ""
   }
 
   dialogService: DialogService;
   
+  constructor (dialogService: DialogService) {
+    this.dialogService = dialogService;
+  }  
 
   public reset(target){
     this.dialogService.open({ viewModel: ResetPrompt, model: 'Good or Bad?', lock: false }).whenClosed(response => {
@@ -27,6 +31,7 @@ export class Task {
         this.asset.department = "";
         this.asset.emailOfDepartment = "";
         this.asset.purchaseDate = "";
+        this.asset.CountryOfDepartment = "";
         target.setAttribute('disabled', 'true');
       }
     });
